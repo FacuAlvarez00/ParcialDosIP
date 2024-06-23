@@ -35,7 +35,7 @@ public class Main {
 			System.out.println("5 - Salir del programa");
 			generarRenglonLargo();
 			
-			int opcionElegida = 0;		
+			int opcionElegida = -1;		
 			
 			
 			// comprobacion para que el programa no deje de ejecutarse en caso de que el usuario no eliga un numero
@@ -173,6 +173,5 @@ public class Main {
 		public static void generarRenglonCorto() {
 		System.out.println("___________\n");
 		}
-
 
 }

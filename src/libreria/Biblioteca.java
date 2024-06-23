@@ -47,7 +47,7 @@ public class Biblioteca {
 	
 	
 	
-		// Metodo para encontrar un libro por su nombre
+		// Metodo para encontrar un libro 
 		private Libro buscarLibroPorNombre(String nombreLibro) {
 			for (Libro libro : this.libros) {
 				if (libro.getTitulo().equals(nombreLibro)) {
@@ -72,7 +72,7 @@ public class Biblioteca {
 		
 	
 		
-		// Metodo para listar todos los libros disponibles de la biblioteca
+		// Metodo para encontrar libros por nombre
 		public List<Libro> buscarLibro(String nombreLibro) {
 			List<Libro> librosEncontrados = new ArrayList<>();
 			for (Libro libro : this.libros) {
@@ -91,7 +91,7 @@ public class Biblioteca {
 			return librosEncontrados;
 		}
 		
-		// Metodo para mostrar los libros disponibles
+		// Metodo para listar los libros
 		public void mostrarLibros() {
 			if (this.libros.isEmpty()) {
 				System.out.println("No hay libros en la biblioteca.");

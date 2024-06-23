@@ -18,29 +18,26 @@ public class Biblioteca {
 		this.libros = new ArrayList<>();
 	}
 	
+	/* Metodo para agregar el libro a la biblioteca, con validaciones para que el usuario no pueda ingresar
+	el libro sin todos los datos */
 	public void agregarLibro(Libro libro) {
 		if (libro != null) {
-			// Validación de nombre
 			if (libro.getTitulo().isEmpty() || libro.getTitulo().isBlank()) {
 				System.out.println("Error al agregar el libro, tiene que haber un nombre");
 				return;
 			}
-			// Validación de autor
 			if (libro.getAutor().isEmpty() || libro.getAutor().isBlank()) {
 				System.out.println("Error al agregar el autor del libro, tiene que haber un nombre");
 				return;
 			}
-			// Validación del genero
 			if (libro.getGenero().isEmpty() || libro.getGenero().isBlank()) {
 				System.out.println("Error al agregar el genero, tiene que ingresar el nombre de un genero");
 				return;
 			}
-			// Validación del año publicado
 			if (libro.getAñoPublicacion() < 0) {
 				System.out.println("Error al agregar el año de publicación, tiene que ingresar un año");
 				return;
 			}
-			// Si las validaciones son correctas, se agrega el producto a la lista
 			this.libros.add(libro);
 			System.out.println("Libro agregado correctamente.");
 		} else {
@@ -48,33 +45,39 @@ public class Biblioteca {
 		}
 	}
 	
-		
 	
-		
-		public void eliminarLibro(String nombreLibro) {
-			Libro libroEliminado = buscarLibroPorNombre(nombreLibro);
-			if (libroEliminado != null) {
-				this.libros.remove(libroEliminado);
-				System.out.println("Libro eliminado correctamente.");
-			} else {
-				System.out.println("No se encontró el producto con el nombre: " + nombreLibro);
-			}
-		}
-		
+	
+		// Metodo para encontrar un libro por su nombre
 		private Libro buscarLibroPorNombre(String nombreLibro) {
 			for (Libro libro : this.libros) {
-				if (libro.getTitulo() == nombreLibro) {
+				if (libro.getTitulo().equals(nombreLibro)) {
 					return libro;
 				}
 			}
 			return null;
 		}
 		
+	
+		// metodo para eliminar libros por nombre
+		public void eliminarLibro(String nombreLibro) {
+			Libro libroEliminado = buscarLibroPorNombre(nombreLibro);
+			if (libroEliminado != null) {
+				System.out.println("Borrando libro con los datos: " + libroEliminado);
+				this.libros.remove(libroEliminado);
+				System.out.println("Libro eliminado correctamente.");
+			} else {
+				System.out.println("No se encontró el libro con el nombre de: " + nombreLibro);
+			}
+		}
+		
+	
+		
+		// Metodo para listar todos los libros disponibles de la biblioteca
 		public List<Libro> buscarLibro(String nombreLibro) {
 			List<Libro> librosEncontrados = new ArrayList<>();
-			for (Libro producto : this.libros) {
-				if (producto.getTitulo().toLowerCase().contains(nombreLibro.toLowerCase())) {
-					librosEncontrados.add(producto);
+			for (Libro libro : this.libros) {
+				if (libro.getTitulo().toLowerCase().contains(nombreLibro.toLowerCase())) {
+					librosEncontrados.add(libro);
 				}
 			}
 			if (librosEncontrados.isEmpty()) {
